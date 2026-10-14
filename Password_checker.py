@@ -15,3 +15,4 @@ elif any(char.isspace() for char in Password):
     print("password must not contain any spaces")
 elif not any(char.isdigit() for char in Password):
     print("password must contain at least one digit")
+
