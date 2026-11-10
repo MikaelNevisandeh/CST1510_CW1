@@ -1,20 +1,16 @@
-source_ip = input("Enter the source IP address: ")
-failed_logins = float(input("Enter the number of failed logins: "))
-total_attempts = float(input("Enter the number of total attempts: "))
+"""
+Cyber Security Mini-Project: Initial Threat Record Check (Week 1 Pass Criteria).
+"""
 
-difference = total_attempts - failed_logins
-percent = (failed_logins / total_attempts) * 100
+# 1. Ask the user for the three lane-specific values
+source_ip = input("Enter Source IP: ")
+failed_logins = int(input("Enter Failed Logins: "))
+total_attempts = int(input("Enter Total Attempts: "))
 
-print()
-print("==================================")
-print(f" RECORD CHECK  -  {source_ip}")
-print("==================================")
-
-print(f"Failed Logins:  {failed_logins:>18.2f}")
-print(f"Total Attempts: {total_attempts:>18.2f}")
-print(f"Difference:     {difference:>+18.2f}")
-print(f"Percentage:     {percent:>18.2f}%")
-
-print(f"Analysis:       Review Required")
-
-print("==================================")
+# 2. Print them back in a clean, lined bordered report matching the standard layout
+print("========================================")
+print(f"RECORD CHECK  -  {source_ip}")
+print("========================================")
+print(f"Failed      : {failed_logins}")
+print(f"Total       : {total_attempts}")
+print("========================================")

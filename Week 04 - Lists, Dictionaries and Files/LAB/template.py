@@ -1,54 +1,41 @@
 """
-RECORD CHECK  -  my version
-===========================
-
-Name  :
-Lane  :  AI / Cyber / IT      (delete two)
-Date  :
-
-Run it:   python template.py
-
-Work through the numbered sections in order. Each one tells you what it must do.
-Delete these instructions as you replace them with your code.
+Cyber Security Mini-Project: Monitoring Failed Login Attempts.
 """
 
-# =================================================================== FUNCTIONS
-# 1. Bring back check_record(value, limit) and print_report(...) from Week 3
-#    (copy them, or rewrite them - either is fine). check_record returns
-#    difference, percent and status. print_report does all of the printing,
-#    nothing outside it should contain a print() of its own. Give each a
-#    one-line docstring.
-
-# your function(s) go here
+def check_record(record):
+    """Determines if a security record has exceeded its allowed limit."""
+    if record["value"] > record["limit"]:
+        return "OVER LIMIT"
+    else:
+        return "OK"
 
 
-# ====================================================================== STORE
-# 2. Get your records into a list of dicts, each shaped like:
-#        {"label": ..., "value": ..., "limit": ...}
-#
-#    Threshold : write the list directly in the code - at least 3 records.
-#    Typical   : instead, write a function load_records(path) that reads
-#                label,value,limit lines from a file and returns the list.
-#                Make your own data file, one record per line.
-#    Excellent : also write the results out to a new file (one line per
-#                record: label, status), as well as printing them.
-
-records = []   # replace with your code
+def print_report(record, status):
+    """Prints a clear report for a single IP address record."""
+    print(f"IP: {record['label']:<15} | Failed: {record['value']:<4} / Total: {record['limit']:<4} -> Status: {status}")
 
 
-# =============================================================== PROCESS + OUTPUT
-# 3. Loop over records. For each one, call check_record and print_report.
-#
-#    Excellent : also keep a running count of how many were OVER LIMIT, and
-#                print that once, after the loop ends.
+def main():
+    """Main program execution flow."""
+    # Threshold Pass Standard: Hardcoded list of at least 3 dictionaries directly in the code
+    records = [
+        {"label": "10.0.0.5", "value": 12, "limit": 400},
+        {"label": "192.168.1.50", "value": 450, "limit": 400},
+        {"label": "172.16.0.22", "value": 5, "limit": 10},
+        {"label": "10.0.0.15", "value": 150, "limit": 100}
+    ]
 
-# your loop goes here
+    print("--- Cyber Security Status Report ---")
+    
+    # Loop over your records and print a report for each
+    for record in records:
+        status = check_record(record)
+        print_report(record, status)
 
 
-# ==========================================================================
-# 4. Before you finish:
-#
-#    [ ] Run it and check every record's numbers are correct by hand
-#    [ ] If you are loading from a file, check what happens when the file
-#        does not exist - write the error down
-#    [ ] Check every function still does one job
+if __name__ == "__main__":
+    main()
+
+
+
+

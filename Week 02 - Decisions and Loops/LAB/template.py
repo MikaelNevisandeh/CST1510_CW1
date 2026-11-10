@@ -1,44 +1,25 @@
 """
-RECORD CHECK  -  my version
-===========================
-
-Name  :
-Lane  :  Cyber
-Date  :
-
-Run it:   python template.py
+Cyber Security Mini-Project: Conditional Threat Record Check (Week 2 Pass Criteria).
 """
 
+# 1. Ask the user for the three lane-specific values
+source_ip = input("Enter Source IP: ")
+failed_logins = int(input("Enter Failed Logins: "))
+total_attempts = int(input("Enter Total Attempts: "))
 
-label = input("Enter record label (e.g., Hostname/IP): ")
-value = float(input("Enter current value: "))
-limit = float(input("Enter safety limit: "))
-
-
-
-difference = value - limit
-percent = (value / limit) * 100
-
-
-if percent >= 100.0:
+# 2. Decide the threat status using if / else logic
+if failed_logins > total_attempts:
     status = "OVER LIMIT"
-elif percent >= 90.0:
-    status = "WARNING"
 else:
     status = "OK"
 
+# 3. Print the values back in a lined bordered report matching the standard layout
+print("========================================")
+print(f" RECORD CHECK  -  {source_ip}")
+print("========================================")
+print(f" Failed      : {failed_logins}")
+print(f" Total       : {total_attempts}")
+print(f" Status      : {status}")
+print("========================================")
 
-
-print()
-print("=" * 34)
-print(f"  RECORD CHECK  -  {label}")
-print("=" * 34)
-
-print(f"Current Value: {value:>19.2f}")
-print(f"Safety Limit:  {limit:>19.2f}")
-print(f"Difference:    {difference:>19.2f}")
-print(f"Percentage:    {percent:>18.2f}%")
-print(f"Status:        {status:>19}")
-
-print("=" * 34)
 
